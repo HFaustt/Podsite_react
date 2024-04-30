@@ -1,0 +1,12 @@
+.spinner {
+  width: 100px;
+  height: 100px;
+  margin: 30px;
+  border: 15px solid;
+  border-color: #ffffff #ffffff transparent #ffffff;
+  border-radius: 50%;
+  animation: spinner 0.9s linear infinite;
+  border: 15px dotted;
+  border-color: #ffffff #ffffff transparent #ffffff;
+  animation: spinner 1s linear infinite;
+}

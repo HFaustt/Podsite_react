@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="justify-start">
         <NavLink to="/about" className="flex items-center gap-2">
           <img
-            src="/public/logo.jpeg"
+            src="/logo.jpeg"
             alt="Logo"
             width={40}
             height={40}
