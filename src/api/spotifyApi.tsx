@@ -4,7 +4,7 @@ import { Buffer } from "buffer";
 export function isTokenExpired() {
   const tokenSetAt = Number(localStorage.getItem("token_set_at") || 0);
   const currentTime = new Date().getTime();
-  console.log(currentTime - tokenSetAt);
+  // console.log(currentTime - tokenSetAt);
   return (currentTime - tokenSetAt) / 1000 > 3600;
 }
 

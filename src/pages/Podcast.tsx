@@ -1,13 +1,17 @@
+import { getAccessToken } from "@/api/spotifyApi";
 import AllEpisodes from "@/components/AllEpisodes";
-import EpisodeCard from "@/components/EpisodeCard";
+import { useEffect } from "react";
 
 export default function Podcast() {
+  useEffect(() => {
+    getAccessToken();
+  }, []);
+
   return (
     <div>
       <h1 className="text-5xl font-bold text-center my-10">Podcast</h1>
       <div>
-        TEST
-        {/* <AllEpisodes /> */}
+        <AllEpisodes />
       </div>
     </div>
   );

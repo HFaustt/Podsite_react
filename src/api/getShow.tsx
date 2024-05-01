@@ -51,3 +51,20 @@ export async function getAllEpisodes() {
   console.log(data);
   return data;
 }
+
+export async function getEpisodeById(episodeId: string | undefined) {
+  const accessToken = localStorage.getItem("access_token");
+  const response = await fetch(
+    `https://api.spotify.com/v1/tracks/${episodeId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+}

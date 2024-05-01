@@ -6,8 +6,8 @@ import { useEffect } from "react";
 export default function Home() {
   useEffect(() => {
     getAccessToken();
-    // refreshToken();
   }, []);
+
   return (
     <main>
       <div className="mt-4 justify-center bg-black w-[100vw] h-[28rem] relative">

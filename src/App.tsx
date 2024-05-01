@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Podcast from "./pages/Podcast";
@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Suspense } from "react";
 import SpinnerFullPage from "./components/shared/SpinnerFullPage";
+import Episode from "./pages/Episode";
 
 function App() {
   const queryClient = new QueryClient({});
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/podcast" element={<Podcast />} />
+                <Route path="/podcast/:id" element={<Episode />} />
               </Route>
               <Route path="*" element={<PageNotFound />} />
             </Routes>

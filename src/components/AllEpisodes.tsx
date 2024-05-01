@@ -1,10 +1,11 @@
 import { getAllEpisodes, getLatestEpisodes } from "@/api/getShow";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "./shared/Spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { formatMilliseconds } from "@/helpers/helpers";
 
 export default function AllEpisodes() {
+  const navigate = useNavigate();
   const {
     data: allEpisodes,
     error,
@@ -14,6 +15,7 @@ export default function AllEpisodes() {
     queryKey: ["allEpisodes"],
     queryFn: getAllEpisodes,
   });
+
   if (isFetching || isLoading)
     return (
       <div className="flex items-center justify-center text-5xl">
@@ -28,7 +30,12 @@ export default function AllEpisodes() {
         <p>{error.message}</p>
       </div>
     );
-  console.log(allEpisodes);
+
+  function onLinkClick(id: string, event: any) {
+    event.preventDefault();
+    navigate(`/podcast/${id}`);
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
       {allEpisodes.items.map((episode: any) => (
@@ -37,7 +44,11 @@ export default function AllEpisodes() {
             <h2 className="text-center font-bold mb-3 line-clamp-1">
               {episode.name}
             </h2>
-            <Link to={episode.external_urls.spotify} target="_blank">
+            <Link
+              to={`/podcast/${episode.id}`}
+              target="_blank"
+              onClick={(event) => onLinkClick(episode.id, event)}
+            >
               <img src={episode.images[0].url} alt="episode" className="mb-5" />
             </Link>
             <div className="flex items-center justify-center">
