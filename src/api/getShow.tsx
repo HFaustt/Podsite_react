@@ -21,7 +21,7 @@ export async function getProfile() {
 export async function getLatestEpisodes() {
   const accessToken = localStorage.getItem("access_token");
   const response = await fetch(
-    `https://api.spotify.com/v1/shows/${myPodcastId}/episodes?limit=3`,
+    `https://api.spotify.com/v1/shows/${myPodcastId}/episodes?limit=4`,
     {
       method: "GET",
       headers: {
@@ -31,7 +31,7 @@ export async function getLatestEpisodes() {
     }
   );
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 

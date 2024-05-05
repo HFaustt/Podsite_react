@@ -12,9 +12,9 @@ export default function Navbar() {
   const currentPath = location.pathname;
 
   return (
-    <nav className="flex items-center justify-between mx-10 my-10">
+    <nav className="flex items-center justify-between mx-10 z-20 w-[92%] absolute bg-transparent mt-8">
       <div className="justify-start">
-        <NavLink to="/about" className="flex items-center gap-2">
+        <NavLink to="/about" className="flex items-center ml-5">
           <img
             src="/logo.jpeg"
             alt="Logo"
@@ -53,7 +53,7 @@ function NavItem({ href, children, currentPath }: NavItemProps) {
             : ""
         }
         style={{
-          boxShadow: isActive ? "0 1px 0 0 black" : "none",
+          boxShadow: isActive ? "0 1px 0 0 white" : "none",
           paddingBottom: isActive ? "1px" : "0",
         }}
       >

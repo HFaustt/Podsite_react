@@ -1,4 +1,4 @@
-import { getLatestEpisodes, getProfile } from "@/api/getShow";
+import { getLatestEpisodes } from "@/api/getShow";
 import { formatMilliseconds } from "@/helpers/helpers";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
@@ -24,30 +24,38 @@ export default function EpisodeCard() {
       </div>
     );
   if (isLoading || isFetching) return <Spinner />;
-  console.log(latestEp);
+  // console.log(latestEp);
   return (
-    <div className="p-4 flex items-center justify-center w-96 gap-28">
-      {latestEp.items.map((episode: EpisodeType) => (
-        <div key={episode.id}>
-          <div className="items-center justify-center">
-            <h2 className="text-center font-bold mb-3 line-clamp-1">
-              {episode?.name}
-            </h2>
-            <Link to={episode?.external_urls.spotify} target="_blank">
-              <img
-                src={episode?.images[0].url}
-                alt="episode"
-                className="mb-5 rounded-md"
-              />
-            </Link>
+    <div className="flex items-center justify-start w-auto gap-10 mx-[7rem]">
+      {latestEp?.items.map((episode: EpisodeType) => (
+        <div key={episode.id} className="relative">
+          <div className="items-center">
+            {/* <h2 className="text-center font-bold mb-3 line-clamp-1">
+              {episode.name}
+            </h2> */}
+            <div className="relative">
+              <Link to={episode.external_urls.spotify} target="_blank">
+                <img
+                  src={episode.images[0].url}
+                  alt="episode"
+                  className="mb-5 rounded-md"
+                />
+              </Link>
+              <div className="flex flex-col font-semibold">
+                <div className="absolute top-0 left-1 p-1">
+                  {episode.release_date}
+                </div>
+                <div className="absolute top-5 left-1 p-1">
+                  {formatMilliseconds(episode.duration_ms)}
+                </div>
+              </div>
+            </div>
             <div className="flex items-center justify-center">
-              <audio controls className="mb-5 items-center justify-center">
-                <source src={episode?.audio_preview_url} type="audio/mpeg" />
+              <audio controls className="mb-5 items-center justify-center pb-3">
+                <source src={episode.audio_preview_url} type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
             </div>
-            <p>Release Date: {episode?.release_date}</p>
-            <p>Duration: {formatMilliseconds(episode?.duration_ms)}</p>
           </div>
         </div>
       ))}

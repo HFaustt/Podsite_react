@@ -1,4 +1,4 @@
-import { getAllEpisodes, getLatestEpisodes } from "@/api/getShow";
+import { getAllEpisodes } from "@/api/getShow";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "./shared/Spinner";
 import { Link, useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ export default function AllEpisodes() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mx-20">
       {allEpisodes.items.map((episode: any) => (
         <div key={episode.id}>
           <div className="items-center justify-center">
@@ -57,8 +57,10 @@ export default function AllEpisodes() {
                 Your browser does not support the audio element.
               </audio>
             </div>
-            <p>Release Date: {episode.release_date}</p>
-            <p>Duration: {formatMilliseconds(episode.duration_ms)}</p>
+            <p className="text-center">Release Date: {episode.release_date}</p>
+            <p className="mb-10 text-center">
+              Duration: {formatMilliseconds(episode.duration_ms)}
+            </p>
           </div>
         </div>
       ))}

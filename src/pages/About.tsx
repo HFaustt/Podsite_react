@@ -6,7 +6,7 @@ import SpinnerFullPage from "@/components/shared/SpinnerFullPage";
 export default function About() {
   return (
     <SpinnerFullPage /> && (
-      <div className="flex items-center">
+      <div className="flex items-center mt-20">
         <div className="pt-10 pl-32 w-1/2">
           <img
             src="/about.jpg"

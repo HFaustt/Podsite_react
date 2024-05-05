@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Podcast from "./pages/Podcast";
-import AppLayout from "./components/ui/AppLayout";
+import AppLayout from "./components/shared/AppLayout";
 import PageNotFound from "./components/shared/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
