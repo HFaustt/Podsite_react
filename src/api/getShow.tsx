@@ -1,23 +1,5 @@
 import { myPodcastId } from "@/helpers/constants";
 
-export async function getProfile() {
-  const accessToken = localStorage.getItem("access_token");
-  const response = await fetch(
-    `https://api.spotify.com/v1/shows/${myPodcastId}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  );
-
-  const data = await response.json();
-  console.log(data);
-  return data;
-}
-
 export async function getLatestEpisodes() {
   const accessToken = localStorage.getItem("access_token");
   const response = await fetch(
@@ -35,10 +17,10 @@ export async function getLatestEpisodes() {
   return data;
 }
 
-export async function getAllEpisodes() {
+export async function getAllEpisodes(limit: string, offset: string) {
   const accessToken = localStorage.getItem("access_token");
   const response = await fetch(
-    `https://api.spotify.com/v1/shows/${myPodcastId}/episodes?limit=50`,
+    `https://api.spotify.com/v1/shows/${myPodcastId}/episodes?limit=${limit}&offset=${offset}`,
     {
       method: "GET",
       headers: {
@@ -48,23 +30,6 @@ export async function getAllEpisodes() {
     }
   );
   const data = await response.json();
-  console.log(data);
-  return data;
-}
-
-export async function getEpisodeById(episodeId: string | undefined) {
-  const accessToken = localStorage.getItem("access_token");
-  const response = await fetch(
-    `https://api.spotify.com/v1/tracks/${episodeId}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  );
-  const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }

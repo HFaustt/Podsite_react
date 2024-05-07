@@ -11,12 +11,12 @@ import SpinnerFullPage from "./components/shared/SpinnerFullPage";
 import Episode from "./pages/Episode";
 
 function App() {
-  const queryClient = new QueryClient({});
+  const queryClient = new QueryClient();
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom" />
         <BrowserRouter>
           <Suspense fallback={<SpinnerFullPage />}>
             <Routes>

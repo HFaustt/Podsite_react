@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import React from "react";
 
 interface NavItemProps {
@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <nav className="flex items-center justify-between mx-10 z-20 w-[92%] absolute bg-transparent mt-8">
       <div className="justify-start">
-        <NavLink to="/about" className="flex items-center ml-5">
+        <Link to="/about" className="flex items-center ml-5">
           <img
             src="/logo.jpeg"
             alt="Logo"
@@ -22,7 +22,7 @@ export default function Navbar() {
             height={40}
             className="rounded-full"
           />
-        </NavLink>
+        </Link>
       </div>
       <div>
         <ul className="flex items-center gap-6">

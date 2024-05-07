@@ -2,19 +2,20 @@ import { getLatestEpisodes } from "@/api/getShow";
 import { formatMilliseconds } from "@/helpers/helpers";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import Spinner from "./shared/Spinner";
 import { EpisodeType } from "@/types/episode";
+import EpisodeSkeleton from "./shared/EpisodeSkeleton";
 
 export default function EpisodeCard() {
   const {
     data: latestEp,
     isLoading,
     error,
-    isFetching,
   } = useQuery({
     queryKey: ["latestEp"],
     queryFn: getLatestEpisodes,
   });
+
+  const LIMIT = 4;
 
   if (error)
     return (
@@ -23,16 +24,18 @@ export default function EpisodeCard() {
         <p>{error.message}</p>
       </div>
     );
-  if (isLoading || isFetching) return <Spinner />;
+  if (isLoading)
+    return (
+      <div>
+        <EpisodeSkeleton length={LIMIT} />
+      </div>
+    );
   // console.log(latestEp);
   return (
     <div className="flex items-center justify-start w-auto gap-10 mx-[7rem]">
       {latestEp?.items.map((episode: EpisodeType) => (
         <div key={episode.id} className="relative">
           <div className="items-center">
-            {/* <h2 className="text-center font-bold mb-3 line-clamp-1">
-              {episode.name}
-            </h2> */}
             <div className="relative">
               <Link to={episode.external_urls.spotify} target="_blank">
                 <img
