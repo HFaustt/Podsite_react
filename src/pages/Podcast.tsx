@@ -1,6 +1,6 @@
 import { getEpisodes } from "@/api/getShow";
 import { getAccessToken } from "@/api/spotifyApi";
-import EpisodeCard from "@/components/EpisodeCard";
+import EpisodeCard from "@/components/shared/EpisodeCard";
 import Pagination from "@/components/Pagination";
 import EpisodeSkeleton from "@/components/shared/EpisodeSkeleton";
 import { EpisodeType } from "@/types/episode";
@@ -17,7 +17,7 @@ export default function Podcast() {
 
   const LIMIT = 9;
   const offset = (currentPage - 1) * LIMIT;
-  const podcastId: boolean = true;
+  const isPodcastPage: boolean = true;
 
   const {
     data: episodes,
@@ -61,7 +61,7 @@ export default function Podcast() {
   };
 
   return (
-    <div className="mt-24">
+    <div className="mt-20">
       <h1 className="text-5xl font-bold text-center ">Podcast</h1>
 
       <div className="mx-20 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-14 gap-4 mt-10 justify-center">
@@ -72,7 +72,7 @@ export default function Podcast() {
             isPlaying={episode.id === currentPlayingId}
             onTogglePlay={() => handleAudioPlay(episode.id)}
             title={episode.name}
-            podcastId={podcastId}
+            isPodcastPage={isPodcastPage}
           />
         ))}
       </div>

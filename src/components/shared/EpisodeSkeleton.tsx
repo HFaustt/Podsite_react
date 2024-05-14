@@ -1,4 +1,4 @@
-import Skeletons from "../Skeletons";
+import Skeletons from "./Skeletons";
 
 type EpisodeSkeletonProps = {
   length: number;
@@ -17,7 +17,7 @@ export default function EpisodeSkeleton({ length }: EpisodeSkeletonProps) {
 
   if (length === 9)
     return (
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-24 ml-24  gap-4 mt-28 justify-center opacity-80">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-24 ml-24 gap-4 mt-28 justify-center opacity-80">
         {renderSkeletons()}
       </div>
     );

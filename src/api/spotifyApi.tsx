@@ -23,7 +23,6 @@ export async function getAccessToken(): Promise<string> {
   });
 
   const data = await response.json();
-  // console.log(data);
   localStorage.setItem("access_token", data.access_token);
   localStorage.setItem("token_set_at", new Date().getTime().toString());
   return data.access_token;

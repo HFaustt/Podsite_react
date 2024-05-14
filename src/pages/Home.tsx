@@ -1,6 +1,6 @@
 import { getEpisodes } from "@/api/getShow";
 import { getAccessToken } from "@/api/spotifyApi";
-import EpisodeCard from "@/components/EpisodeCard";
+import EpisodeCard from "@/components/shared/EpisodeCard";
 import EpisodeSkeleton from "@/components/shared/EpisodeSkeleton";
 import { Button } from "@/components/ui/button";
 import { EpisodeType } from "@/types/episode";
@@ -38,8 +38,9 @@ export default function Home() {
       </div>
     );
   if (isLoading)
+    //TODO: fix styling on skeleton it's rendering on top of the page
     return (
-      <div>
+      <div className="absolute bottom-4 ml-[5rem]">
         <EpisodeSkeleton length={LIMIT} />
       </div>
     );

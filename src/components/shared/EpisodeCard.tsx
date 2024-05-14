@@ -1,15 +1,15 @@
 import { formatMilliseconds } from "@/helpers/helpers";
 import { Link, useNavigate } from "react-router-dom";
 import { EpisodeType } from "@/types/episode";
-import AudioPlayer from "./shared/AudioPlayer";
+import AudioPlayer from "./AudioPlayer";
 import React, { useState } from "react";
-import ProgressBar from "./shared/ProgressBar";
+import ProgressBar from "./ProgressBar";
 
 type EpisodeCardProps = {
   episode: EpisodeType;
   isPlaying: boolean;
   title?: string;
-  podcastId?: boolean;
+  isPodcastPage?: boolean;
   onTogglePlay: () => void;
 };
 
@@ -18,7 +18,7 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
   isPlaying,
   title,
   onTogglePlay,
-  podcastId,
+  isPodcastPage,
 }) => {
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
@@ -36,11 +36,11 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
     <div className="flex items-center justify-start w-auto gap-10 mx-10">
       <div className="relative">
         <div className="items-center">
-          <div className="mb-5 text-center font-bold line-clamp-1">
+          <div className="mb-5 text-center text-lg font-bold line-clamp-1">
             <h2>{title}</h2>
           </div>
           <div className="relative">
-            {!podcastId ? (
+            {!isPodcastPage ? (
               <Link to={episode.external_urls.spotify} target="_blank">
                 <img
                   src={episode.images[0].url}

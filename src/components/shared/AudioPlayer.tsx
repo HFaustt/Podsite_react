@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import { MdOutlinePlayCircleOutline } from "react-icons/md";
 import { HiOutlinePauseCircle } from "react-icons/hi2";
+import { useLocation } from "react-router-dom";
 
 type AudioPlayerProps = {
   src: string;
-  isPlaying: boolean;
+  isPlaying?: boolean;
+  isPodcastPage?: boolean;
   onTogglePlay: () => void;
   onUpdateProgress: (progress: number, id: string) => void;
 };
@@ -16,7 +18,10 @@ export default function AudioPlayer({
   onTogglePlay,
   onUpdateProgress,
 }: AudioPlayerProps) {
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -49,16 +54,21 @@ export default function AudioPlayer({
     onTogglePlay();
   }
 
+  const btnStyle =
+    currentPath === "/podcast"
+      ? "top-[3.2rem] right-[-10px] "
+      : "top-7 right-[-0.7rem]";
+
   return (
     <div>
       <Button
         onClick={togglePlay}
-        className="bg-transparent flex items-center justify-center absolute bottom-1 right-[-10px] hover:bg-transparent "
+        className={`bg-transparent flex items-center justify-center absolute ${btnStyle} hover:bg-transparent`}
       >
         {!isPlaying ? (
-          <MdOutlinePlayCircleOutline className="text-[36px] hover:text-[41px] transition-all ease-in-out duration-200" />
+          <MdOutlinePlayCircleOutline className="text-[44px] transition-all ease-in-out duration-200 hover:scale-110" />
         ) : (
-          <HiOutlinePauseCircle className="text-[36px] hover:text-[41px] transition-all ease-in-out duration-200" />
+          <HiOutlinePauseCircle className="text-[44px] hover:scale-110 transition-all ease-in-out duration-200" />
         )}
       </Button>
 
