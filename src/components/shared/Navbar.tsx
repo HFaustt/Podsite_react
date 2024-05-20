@@ -1,5 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import React from "react";
+import MobileNav from "./MobileNav";
 
 interface NavItemProps {
   href: string;
@@ -12,7 +13,7 @@ export default function Navbar() {
   const currentPath = location.pathname;
 
   return (
-    <nav className="flex items-center justify-between mx-10 z-20 w-[92%] absolute bg-transparent mt-8">
+    <nav className="flex items-center justify-between mx-10 z-20 w-[92%] absolute mt-8">
       <div className="justify-start">
         <Link to="/about" className="flex items-center ml-5">
           <img
@@ -25,7 +26,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div>
-        <ul className="flex items-center gap-6">
+        <ul className="items-center md:text-[1rem] gap-6 lg:flex md:flex xl:flex sm:display-none">
           <NavItem href="/" currentPath={currentPath}>
             Home
           </NavItem>
@@ -36,6 +37,9 @@ export default function Navbar() {
             About
           </NavItem>
         </ul>
+      </div>
+      <div className="sm:hidden">
+        <MobileNav />
       </div>
     </nav>
   );
@@ -49,7 +53,7 @@ function NavItem({ href, children, currentPath }: NavItemProps) {
       <li
         className={
           isActive
-            ? "text-lg transition-all ease-in-out duration-200 relative"
+            ? "lg:text-lg xl:text-xl md:text-[1.25rem] transition-all ease-in-out duration-200 relative"
             : ""
         }
         style={{

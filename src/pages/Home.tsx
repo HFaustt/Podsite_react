@@ -38,7 +38,6 @@ export default function Home() {
       </div>
     );
   if (isLoading)
-    //TODO: fix styling on skeleton it's rendering on top of the page
     return (
       <div className="absolute bottom-4 ml-[5rem]">
         <EpisodeSkeleton length={LIMIT} />
@@ -56,13 +55,13 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col items-center">
-          <div className="text-6xl text-white uppercase absolute top-1/4 text-center font-bold font-mono ">
+          <div className="xl:text-6xl md:text-4xl sm:text-2xl text-white uppercase absolute top-1/4 text-center font-bold font-mono">
             <span>Welcome to</span>
             <br />
             <h1 className="mt-2">Hamzatalks.podcast</h1>
           </div>
           <div className="flex flex-col items-center absolute top-1/3 mt-[7rem]">
-            <div className="flex items-center mr-[71rem] mt-16 gap-8">
+            <div className="flex items-center absolute left-10 mt-16 gap-8 ">
               <h2 className="font-bold text-4xl">Latest</h2>
               <div>
                 <Link
@@ -75,7 +74,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="flex justify-center w-full">
+            <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1 ">
               {episodes?.items.map((episode: EpisodeType) => (
                 <EpisodeCard
                   key={episode.id}

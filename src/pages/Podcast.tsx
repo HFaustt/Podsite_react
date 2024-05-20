@@ -17,7 +17,6 @@ export default function Podcast() {
 
   const LIMIT = 9;
   const offset = (currentPage - 1) * LIMIT;
-  const isPodcastPage: boolean = true;
 
   const {
     data: episodes,
@@ -72,7 +71,6 @@ export default function Podcast() {
             isPlaying={episode.id === currentPlayingId}
             onTogglePlay={() => handleAudioPlay(episode.id)}
             title={episode.name}
-            isPodcastPage={isPodcastPage}
           />
         ))}
       </div>

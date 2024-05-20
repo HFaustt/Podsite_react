@@ -1,15 +1,14 @@
 import { formatMilliseconds } from "@/helpers/helpers";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { EpisodeType } from "@/types/episode";
 import AudioPlayer from "./AudioPlayer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 
 type EpisodeCardProps = {
   episode: EpisodeType;
   isPlaying: boolean;
   title?: string;
-  isPodcastPage?: boolean;
   onTogglePlay: () => void;
 };
 
@@ -18,49 +17,46 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
   isPlaying,
   title,
   onTogglePlay,
-  isPodcastPage,
 }) => {
   const [progress, setProgress] = useState(0);
-  const navigate = useNavigate();
 
   function updateProgress(progress: number) {
     setProgress(progress);
   }
 
-  function onLinkClick(id: string, event: any) {
-    event.preventDefault();
-    navigate(`/podcast/${id}`);
-  }
+  const [smallScreen, setSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setSmallScreen(window.innerWidth <= 640);
+    };
+
+    checkScreenSize();
+
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
 
   return (
-    <div className="flex items-center justify-start w-auto gap-10 mx-10">
+    <div className="lg:flex items-center justify-start w-auto lg:gap-10 lg:mx-10 md:mx-[7rem] sm:text-white">
       <div className="relative">
         <div className="items-center">
           <div className="mb-5 text-center text-lg font-bold line-clamp-1">
             <h2>{title}</h2>
           </div>
           <div className="relative">
-            {!isPodcastPage ? (
-              <Link to={episode.external_urls.spotify} target="_blank">
-                <img
-                  src={episode.images[0].url}
-                  alt="episode"
-                  className="rounded-md"
-                />
-              </Link>
-            ) : (
-              <Link
-                to={`/podcast/${episode.id}`}
-                target="_blank"
-                onClick={(event) => onLinkClick(episode.id, event)}
-              >
-                <img
-                  src={episode.images[0].url}
-                  alt="episode"
-                  className="rounded-md"
-                />
-              </Link>
-            )}
+            <Link to={episode.external_urls.spotify} target="_blank">
+              <img
+                src={
+                  smallScreen ? episode.images[1].url : episode.images[0].url
+                }
+                alt="episode"
+                className="rounded-md"
+              />
+            </Link>
 
             <div className="flex flex-col font-semibold">
               <div className="absolute top-0 left-1 p-1">
