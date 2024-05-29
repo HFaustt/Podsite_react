@@ -7,25 +7,8 @@ export default function About() {
   return (
     <SpinnerFullPage /> && (
       <div className="flex items-center mt-20">
-        <div className="pt-10 pl-32 w-1/2">
-          <img
-            src="/about.jpg"
-            height={900}
-            width={450}
-            alt="about"
-            className="scale-x-[-1] rounded-md shadow-2xl"
-          />
-          <div className="flex mt-3 items-center justify-end gap-10 w-[28rem]">
-            <LiaSpotify className="text-3xl" />
-            <FaInstagram className="text-2xl" />
-            <AiOutlineFacebook className="text-2xl" />
-          </div>
-        </div>
-        <div className="flex flex-col ml-16 w-1/2 ">
-          <h1 className="text-8xl mt-20 mr-32 bg-transparent uppercase">
-            About me
-          </h1>
-
+        <div className="flex flex-col ml-[9rem] w-1/2 ">
+          <h1 className="text-8xl mt-20 bg-transparent uppercase">About me</h1>
           <div className="ml-6 pt-10 w-2/3">
             <p className="mb-4">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint
@@ -42,6 +25,20 @@ export default function About() {
           </div>
 
           <hr className="border-y-4 border-black w-16 justify-end mt-20 mr-32 ml-auto" />
+        </div>
+        <div className="mt-10 w-1/2">
+          <img
+            src="/aboutPic.jpg"
+            height={900}
+            width={450}
+            alt="about"
+            className="scale-x-[-1] rounded-md shadow-2xl"
+          />
+          <div className="flex mt-3 items-center justify-end gap-10 w-[28rem]">
+            <LiaSpotify className="text-3xl" />
+            <FaInstagram className="text-2xl" />
+            <AiOutlineFacebook className="text-2xl" />
+          </div>
         </div>
       </div>
     )

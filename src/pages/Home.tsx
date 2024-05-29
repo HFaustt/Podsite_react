@@ -22,15 +22,17 @@ export default function Home() {
     error,
   } = useQuery({
     queryKey: ["getEpisodes"],
-    queryFn: () => getEpisodes(String(LIMIT), offset.toString()),
+    queryFn: () =>
+      getEpisodes({ limit: String(LIMIT), offset: offset.toString() }),
   });
 
   const [currentPlayingId, setCurrentPlayingId] = useState<string | null>(null);
   const handleAudioPlay = (id: string) => {
     setCurrentPlayingId(id === currentPlayingId ? null : id);
   };
+  //localhost:5173/pageNotFound.jpg
 
-  if (error)
+  http: if (error)
     return (
       <div>
         Failed to load data...
@@ -46,12 +48,12 @@ export default function Home() {
 
   return (
     <main>
-      <div className="w-[100vw] h-[100vh] relative">
-        <div className="relative w-full h-full">
+      <div className="w-[100vw] h-[100vh]">
+        <div className="w-full h-full">
           <img
             src="/stockPod.jpg"
             alt="background image"
-            className="absolute inset-0 w-full h-full object-cover scale-x-[-1] opacity-50"
+            className="w-full h-full object-cover scale-x-[-1] opacity-60"
           />
         </div>
         <div className="flex flex-col items-center">
