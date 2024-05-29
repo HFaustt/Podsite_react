@@ -6,6 +6,7 @@ type ImageType = {
 
 export type EpisodeType = {
   audio_preview_url: string;
+  title: string;
   description: string;
   duration_ms: number;
   external_urls: {
