@@ -60,7 +60,7 @@ export default function Home() {
           <div className="xl:text-6xl md:text-4xl sm:text-2xl text-white uppercase absolute top-1/4 text-center font-bold font-mono">
             <span>Welcome to</span>
             <br />
-            <h1 className="mt-2">Hamzatalks.podcast</h1>
+            <h1 className="mt-2">Hamzatalks.test</h1>
           </div>
           <div className="flex flex-col items-center absolute top-1/3 mt-[7rem]">
             <div className="flex items-center absolute left-10 mt-16 gap-8 ">

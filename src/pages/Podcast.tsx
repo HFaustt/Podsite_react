@@ -123,7 +123,7 @@ export default function Podcast() {
       </div>
 
       <div className="mx-20 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-14 gap-4 mt-10 justify-center">
-        {filteredEpisodes.map((episode: EpisodeType) => (
+        {filteredEpisodes?.map((episode: EpisodeType) => (
           <EpisodeCard
             key={episode.id}
             episode={episode}
