@@ -90,7 +90,7 @@ export default function Home() {
                   />
                 ))
               ) : (
-                <p>No episodes available :(</p>
+                <p className="mt-8">No episodes available :(</p>
               )}
             </div>
           </div>
