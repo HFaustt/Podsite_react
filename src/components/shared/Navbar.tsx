@@ -17,7 +17,7 @@ export default function Navbar() {
       <div className="justify-start">
         <Link to="/about" className="flex items-center ml-5">
           <img
-            src="/logo.jpeg"
+            src="/logo.webp"
             alt="Logo"
             width={40}
             height={40}

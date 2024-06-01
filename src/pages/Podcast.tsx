@@ -109,7 +109,7 @@ export default function Podcast() {
     <div>
       <div className="flex items-center justify-center h-[26rem] bg-black">
         <img
-          src="/micBG.jpg"
+          src="/micBG.webp"
           alt="background image"
           className="object-cover w-full h-full opacity-60"
         />

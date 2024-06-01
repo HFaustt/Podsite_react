@@ -4,7 +4,7 @@ export default function PageNotFound() {
   return (
     <div className="w-full h-screen">
       <img
-        src="/pageNotFound.jpg"
+        src="/pageNotFound.webp"
         alt="background image"
         className="w-full h-full object-cover opacity-50"
       />

@@ -28,7 +28,7 @@ export default function About() {
         </div>
         <div className="mt-10 w-1/2">
           <img
-            src="/aboutPic.jpg"
+            src="/aboutPic.webp"
             height={900}
             width={450}
             alt="about"

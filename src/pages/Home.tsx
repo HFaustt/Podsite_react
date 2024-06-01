@@ -54,7 +54,7 @@ export default function Home() {
       <div className="w-[100vw] h-[100vh]">
         <div className="w-full h-full">
           <img
-            src="/stockPod.jpg"
+            src="/stockPod.webp"
             alt="background image"
             className="w-full h-full object-cover scale-x-[-1] opacity-60"
           />
