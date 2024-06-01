@@ -27,24 +27,27 @@ export default function Home() {
   });
 
   const [currentPlayingId, setCurrentPlayingId] = useState<string | null>(null);
+
   const handleAudioPlay = (id: string) => {
     setCurrentPlayingId(id === currentPlayingId ? null : id);
   };
-  //localhost:5173/pageNotFound.jpg
 
-  http: if (error)
+  if (error) {
     return (
       <div>
         Failed to load data...
         <p>{error.message}</p>
       </div>
     );
-  if (isLoading)
+  }
+
+  if (isLoading) {
     return (
       <div className="absolute bottom-4 ml-[5rem]">
         <EpisodeSkeleton length={LIMIT} />
       </div>
     );
+  }
 
   return (
     <main>
@@ -76,15 +79,19 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1 ">
-              {episodes?.items.map((episode: EpisodeType) => (
-                <EpisodeCard
-                  key={episode.id}
-                  episode={episode}
-                  isPlaying={episode.id === currentPlayingId}
-                  onTogglePlay={() => handleAudioPlay(episode.id)}
-                />
-              ))}
+            <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
+              {episodes?.items?.length > 0 ? (
+                episodes.items.map((episode: EpisodeType) => (
+                  <EpisodeCard
+                    key={episode.id}
+                    episode={episode}
+                    isPlaying={episode.id === currentPlayingId}
+                    onTogglePlay={() => handleAudioPlay(episode.id)}
+                  />
+                ))
+              ) : (
+                <p>No episodes available :(</p>
+              )}
             </div>
           </div>
         </div>
