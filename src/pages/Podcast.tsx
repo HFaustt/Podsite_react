@@ -84,7 +84,7 @@ export default function Podcast() {
     debouncedSearch(searchValue, setSearch);
   }, []);
 
-  if (isLoading)
+  if (isLoading || isSearching)
     return (
       <div className="items-center justify-center ml-10 mt-[25rem]">
         <EpisodeSkeleton length={LIMIT} />
