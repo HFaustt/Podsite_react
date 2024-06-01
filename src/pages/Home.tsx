@@ -80,18 +80,14 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
-              {episodes?.items?.length > 0 ? (
-                episodes.items.map((episode: EpisodeType) => (
-                  <EpisodeCard
-                    key={episode.id}
-                    episode={episode}
-                    isPlaying={episode.id === currentPlayingId}
-                    onTogglePlay={() => handleAudioPlay(episode.id)}
-                  />
-                ))
-              ) : (
-                <p className="mt-8">No episodes available :(</p>
-              )}
+              {episodes?.items?.map((episode: EpisodeType) => (
+                <EpisodeCard
+                  key={episode.id}
+                  episode={episode}
+                  isPlaying={episode.id === currentPlayingId}
+                  onTogglePlay={() => handleAudioPlay(episode.id)}
+                />
+              ))}
             </div>
           </div>
         </div>
