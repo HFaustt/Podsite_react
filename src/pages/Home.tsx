@@ -74,19 +74,21 @@ export default function Home() {
             <h1 className="mt-2">Hamzatalks.podcast</h1>
           </div>
           <div className="flex flex-col items-center absolute top-1/3 mt-[7rem]">
-            <div className="flex items-center absolute left-10 mt-16 gap-8 ">
-              <h2 className="font-bold text-4xl">Latest</h2>
-              <div>
-                <Link
-                  to="/podcast"
-                  className="text-xs underline cursor-pointer"
-                >
-                  <Button className="bg-slate-950 rounded-full px-5 mt-2 hover:bg-yellow-500 hover:text-black transition-all duration-300">
-                    See All
-                  </Button>
-                </Link>
+            {isAccessTokenFetched && (
+              <div className="flex items-center absolute left-10 mt-16 gap-8 ">
+                <h2 className="font-bold text-4xl">Latest</h2>
+                <div>
+                  <Link
+                    to="/podcast"
+                    className="text-xs underline cursor-pointer"
+                  >
+                    <Button className="bg-slate-950 rounded-full px-5 mt-2 hover:bg-yellow-500 hover:text-black transition-all duration-300">
+                      See All
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </div>
+            )}
             <Suspense>
               <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
                 {episodes?.items?.map((episode: EpisodeType) => (
