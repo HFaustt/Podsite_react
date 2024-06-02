@@ -12,9 +12,16 @@ import { debounce } from "lodash";
 import { IoSearchOutline } from "react-icons/io5";
 
 export default function Podcast() {
-  useEffect(() => {
-    getAccessToken();
-  }, []);
+  const [isAccessTokenFetched, setIsAccessTokenFetched] = useState(false);
+
+  useQuery({
+    queryKey: ["getAccessToken"],
+    queryFn: async () => {
+      await getAccessToken();
+      setIsAccessTokenFetched(true);
+    },
+    enabled: !isAccessTokenFetched,
+  });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,7 +45,7 @@ export default function Podcast() {
     queryKey: ["getEpisodes", currentPage],
     queryFn: () =>
       getEpisodes({ limit: String(LIMIT), offset: offset.toString() }),
-    enabled: !search,
+    enabled: !search || isAccessTokenFetched,
   });
 
   const {

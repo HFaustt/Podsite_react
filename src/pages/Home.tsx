@@ -5,13 +5,20 @@ import EpisodeSkeleton from "@/components/shared/EpisodeSkeleton";
 import { Button } from "@/components/ui/button";
 import { EpisodeType } from "@/types/episode";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  useEffect(() => {
-    getAccessToken();
-  }, []);
+  const [isAccessTokenFetched, setIsAccessTokenFetched] = useState(false);
+
+  useQuery({
+    queryKey: ["getAccessToken"],
+    queryFn: async () => {
+      await getAccessToken();
+      setIsAccessTokenFetched(true);
+    },
+    enabled: !isAccessTokenFetched,
+  });
 
   const LIMIT = 4;
   const offset = 0;
@@ -24,6 +31,7 @@ export default function Home() {
     queryKey: ["getEpisodes"],
     queryFn: () =>
       getEpisodes({ limit: String(LIMIT), offset: offset.toString() }),
+    enabled: isAccessTokenFetched,
   });
 
   const [currentPlayingId, setCurrentPlayingId] = useState<string | null>(null);
