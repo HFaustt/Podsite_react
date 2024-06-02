@@ -4,7 +4,6 @@ import PageNotFound from "./components/shared/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Suspense, lazy } from "react";
-import SpinnerFullPage from "./components/shared/SpinnerFullPage";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -17,7 +16,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} position="bottom" />
       <BrowserRouter>
-        <Suspense fallback={<SpinnerFullPage />}>
+        <Suspense>
           <Routes>
             <Route element={<AppLayout />} path="/">
               <Route path="/" element={<Home />} />
