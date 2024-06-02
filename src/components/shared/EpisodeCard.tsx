@@ -55,8 +55,8 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
                 }
                 alt="episode"
                 className="rounded-md"
-                width={400}
-                height={400}
+                width={350}
+                height={350}
               />
             </Link>
 
