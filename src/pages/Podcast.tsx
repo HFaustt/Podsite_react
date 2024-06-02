@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
 import EpisodeCard from "@/components/shared/EpisodeCard";
 import Pagination from "@/components/Pagination";
 import EpisodeSkeleton from "@/components/shared/EpisodeSkeleton";
@@ -128,18 +128,19 @@ export default function Podcast() {
           <IoSearchOutline className="text-2xl absolute right-6 text-black" />
         </div>
       </div>
-
-      <div className="mx-20 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-14 gap-4 mt-10 justify-center">
-        {filteredEpisodes?.map((episode: EpisodeType) => (
-          <EpisodeCard
-            key={episode.id}
-            episode={episode}
-            isPlaying={episode.id === currentPlayingId}
-            onTogglePlay={() => handleAudioPlay(episode.id)}
-            title={episode.name}
-          />
-        ))}
-      </div>
+      <Suspense>
+        <div className="grid mx-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-y-14 gap-4 mt-10 justify-center">
+          {filteredEpisodes?.map((episode: EpisodeType) => (
+            <EpisodeCard
+              key={episode.id}
+              episode={episode}
+              isPlaying={episode.id === currentPlayingId}
+              onTogglePlay={() => handleAudioPlay(episode.id)}
+              title={episode.name}
+            />
+          ))}
+        </div>
+      </Suspense>
       <div className="flex items-center justify-center mt-10">
         {!search && (
           <Pagination

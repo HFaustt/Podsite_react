@@ -5,7 +5,7 @@ import EpisodeSkeleton from "@/components/shared/EpisodeSkeleton";
 import { Button } from "@/components/ui/button";
 import { EpisodeType } from "@/types/episode";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -87,16 +87,18 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
-              {episodes?.items?.map((episode: EpisodeType) => (
-                <EpisodeCard
-                  key={episode.id}
-                  episode={episode}
-                  isPlaying={episode.id === currentPlayingId}
-                  onTogglePlay={() => handleAudioPlay(episode.id)}
-                />
-              ))}
-            </div>
+            <Suspense>
+              <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
+                {episodes?.items?.map((episode: EpisodeType) => (
+                  <EpisodeCard
+                    key={episode.id}
+                    episode={episode}
+                    isPlaying={episode.id === currentPlayingId}
+                    onTogglePlay={() => handleAudioPlay(episode.id)}
+                  />
+                ))}
+              </div>
+            </Suspense>
           </div>
         </div>
       </div>
