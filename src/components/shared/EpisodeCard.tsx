@@ -10,6 +10,7 @@ type EpisodeCardProps = {
   isPlaying: boolean;
   title?: string;
   onTogglePlay: () => void;
+  isPodcastPage?: boolean;
 };
 
 const EpisodeCard: React.FC<EpisodeCardProps> = ({
@@ -17,6 +18,7 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
   isPlaying,
   title,
   onTogglePlay,
+  isPodcastPage,
 }) => {
   const [progress, setProgress] = useState(0);
 
@@ -55,8 +57,8 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
                 }
                 alt="episode"
                 className="rounded-md"
-                width={350}
-                height={350}
+                width={isPodcastPage ? 450 : 350}
+                height={isPodcastPage ? 450 : 350}
               />
             </Link>
 
