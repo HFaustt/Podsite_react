@@ -38,9 +38,9 @@ export default function Navbar() {
           </NavItem>
         </ul>
       </div>
-      <div className="sm:hidden">
+      {/* <div className="sm:hidden">
         <MobileNav />
-      </div>
+      </div> */}
     </nav>
   );
 }
