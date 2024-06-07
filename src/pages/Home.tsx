@@ -71,7 +71,7 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col items-center">
-          <div className="xl:text-6xl md:text-4xl sm:text-2xl text-white uppercase absolute top-1/4 text-center font-bold font-mono">
+          <div className="xl:text-6xl md:text-4xl sm:text-2xl text-white uppercase absolute top-[13rem] text-center font-bold font-mono">
             <span className="text-4xl md:text-5xl lg:text-5xl font-bold font-mono uppercase text-white">
               Welcome to
             </span>
@@ -80,7 +80,7 @@ export default function Home() {
               Hamzatalks.podcast
             </h1>
           </div>
-          <div className="flex flex-col items-center absolute top-1/3 mt-[6.4rem]">
+          <div className="flex flex-col items-center absolute top-1/3 mt-[4rem]">
             {isAccessTokenFetched && (
               <div className="flex items-center absolute left-10 mt-16 gap-8 ">
                 <h2 className="font-bold text-4xl">Latest</h2>
