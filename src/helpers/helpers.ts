@@ -16,3 +16,5 @@ export function formatMilliseconds(milliseconds: number) {
 
   return formattedTime;
 }
+
+export const currentYear = new Date().getFullYear();

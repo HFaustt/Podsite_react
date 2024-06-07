@@ -1,8 +1,10 @@
 import { getEpisodes } from "@/api/getShow";
 import { getAccessToken } from "@/api/spotifyApi";
 import EpisodeCard from "@/components/shared/EpisodeCard";
+import EpisodeCarousel from "@/components/shared/EpisodeCarousel";
 import EpisodeSkeleton from "@/components/shared/EpisodeSkeleton";
 import { Button } from "@/components/ui/button";
+import { currentYear } from "@/helpers/helpers";
 import { EpisodeType } from "@/types/episode";
 import { useQuery } from "@tanstack/react-query";
 import { Suspense, useState } from "react";
@@ -70,11 +72,15 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center">
           <div className="xl:text-6xl md:text-4xl sm:text-2xl text-white uppercase absolute top-1/4 text-center font-bold font-mono">
-            <span>Welcome to</span>
+            <span className="text-4xl md:text-5xl lg:text-5xl font-bold font-mono uppercase text-white">
+              Welcome to
+            </span>
             <br />
-            <h1 className="mt-2">Hamzatalks.podcast</h1>
+            <h1 className="mt-2 text-2xl md:text-4xl lg:text-6xl font-bold font-mono uppercase">
+              Hamzatalks.podcast
+            </h1>
           </div>
-          <div className="flex flex-col items-center absolute top-1/3 mt-[7rem]">
+          <div className="flex flex-col items-center absolute top-1/3 mt-[6.4rem]">
             {isAccessTokenFetched && (
               <div className="flex items-center absolute left-10 mt-16 gap-8 ">
                 <h2 className="font-bold text-4xl">Latest</h2>
@@ -91,7 +97,7 @@ export default function Home() {
               </div>
             )}
             <Suspense>
-              <div className="lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
+              <div className="hidden lg:flex xl:flex justify-center w-full mt-[7rem] md:grid md:grid-cols-2 sm:grid-cols-1">
                 {episodes?.items?.map((episode: EpisodeType) => (
                   <EpisodeCard
                     key={episode.id}
@@ -102,9 +108,17 @@ export default function Home() {
                 ))}
               </div>
             </Suspense>
+            {isAccessTokenFetched && (
+              <div className="lg:hidden px-10 mt-[7rem] flex items-center">
+                <EpisodeCarousel episodes={episodes?.items} />
+              </div>
+            )}
           </div>
         </div>
       </div>
+      <footer className="p-4 text-white text-center absolute bottom-0 left-1/2 transform -translate-x-1/2 hidden sm:block">
+        &copy; {currentYear} hamzaTalks. All rights reserved.
+      </footer>
     </main>
   );
 }

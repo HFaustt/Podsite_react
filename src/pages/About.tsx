@@ -1,46 +1,40 @@
-import { LiaSpotify } from "react-icons/lia";
-import { FaInstagram } from "react-icons/fa";
-import { AiOutlineFacebook } from "react-icons/ai";
-import SpinnerFullPage from "@/components/shared/SpinnerFullPage";
+import SocialMediaIcons from "@/components/shared/SocialMediaIcons";
+import { currentYear } from "@/helpers/helpers";
 
 export default function About() {
   return (
-    <SpinnerFullPage /> && (
-      <div className="flex items-center mt-20">
-        <div className="flex flex-col ml-[9rem] w-1/2 ">
-          <h1 className="text-8xl mt-20 bg-transparent uppercase">About me</h1>
-          <div className="ml-6 pt-10 w-2/3">
-            <p className="mb-4">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint
+    <div className="relative min-h-screen bg-dark-100 flex flex-col items-center justify-center">
+      <div className="container mx-auto flex flex-col items-center p-5 md:p-10 text-center">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold uppercase mt-8">
+          About Me
+        </h1>
+        <div className="flex flex-col lg:flex-row items-center mt-10 lg:mt-20">
+          <div className="flex-1 lg:pr-10 w-full h-full">
+            <img
+              src="/aboutPic.webp"
+              alt="Profile Picture"
+              className="w-full h-auto md:h-72 lg:h-96 object-cover shadow-lg"
+            />
+          </div>
+          <div className="flex-1 mt-8 lg:mt-0 lg:pl-10 text-left">
+            <p className="mb-4 text-base md:text-lg lg:text-xl">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
               ipsum repellat quaerat at magni adipisci illum iure sit minima
               recusandae. Adipisci voluptatum expedita quibusdam illum ratione
-              repellat illo eius vero. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
+              repellat illo eius vero.
             </p>
-            <p>
+            <p className="mb-4 text-base md:text-lg lg:text-xl">
               Iusto odio cupiditate voluptas tenetur, maxime eaque deserunt
               impedit dolor in at provident earum quo accusantium? Non labore
               architecto nisi aliquid dignissimos?
             </p>
           </div>
-
-          <hr className="border-y-4 border-black w-16 justify-end mt-20 mr-32 ml-auto" />
         </div>
-        <div className="mt-10 w-1/2">
-          <img
-            src="/aboutPic.webp"
-            height={900}
-            width={450}
-            alt="about"
-            className="scale-x-[-1] rounded-md shadow-2xl"
-          />
-          <div className="flex mt-3 items-center justify-end gap-10 w-[28rem]">
-            <LiaSpotify className="text-3xl" />
-            <FaInstagram className="text-2xl" />
-            <AiOutlineFacebook className="text-2xl" />
-          </div>
-        </div>
+        <SocialMediaIcons />
       </div>
-    )
+      <footer className="p-4 text-white text-center">
+        &copy; {currentYear} hamzaTalks.podcast All rights reserved.
+      </footer>
+    </div>
   );
 }

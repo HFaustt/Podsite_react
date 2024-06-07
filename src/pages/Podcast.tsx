@@ -10,6 +10,7 @@ import { getAccessToken } from "@/api/spotifyApi";
 import { Search } from "@/components/Search";
 import { debounce } from "lodash";
 import { IoSearchOutline } from "react-icons/io5";
+import { currentYear } from "@/helpers/helpers";
 
 export default function Podcast() {
   const [isAccessTokenFetched, setIsAccessTokenFetched] = useState(false);
@@ -153,6 +154,9 @@ export default function Podcast() {
           />
         )}
       </div>
+      <footer className="p-4 text-white text-center">
+        &copy; {currentYear} hamzaTalks. All rights reserved.
+      </footer>
     </div>
   );
 }
