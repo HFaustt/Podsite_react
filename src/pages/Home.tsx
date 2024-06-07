@@ -14,8 +14,9 @@ export default function Home() {
   useQuery({
     queryKey: ["getAccessToken"],
     queryFn: async () => {
-      await getAccessToken();
+      const token = await getAccessToken();
       setIsAccessTokenFetched(true);
+      return token;
     },
     enabled: !isAccessTokenFetched,
   });
