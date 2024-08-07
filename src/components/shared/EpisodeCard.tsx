@@ -43,7 +43,11 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
   }, []);
 
   return (
-    <div className="lg:flex items-center justify-start w-auto lg:gap-10 lg:mx-10 md:mx-[7rem] sm:text-white">
+    <div
+      className={`lg:flex items-center justify-start w-auto lg:gap-10 lg:mx-10 md:mx-[7rem] sm:text-white ${
+        isPodcastPage ? "mx-[-2rem]" : ""
+      }`}
+    >
       <div className="relative">
         <div className="items-center">
           <div className="mb-5 text-center text-lg font-bold line-clamp-1">

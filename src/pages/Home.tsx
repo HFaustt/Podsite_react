@@ -62,8 +62,8 @@ export default function Home() {
 
   return (
     <main>
-      <div className="w-[100vw] h-[100vh]">
-        <div className="w-full h-full">
+      <div className="w-[101vw] h-[100vh] lg:w-[100vw] lg:h-[100vh] md:w-[100vw] md:h-[100vh] ">
+        <div className="w-[101vw] h-[100%] lg:w-full lg:h-full md:w-full md:h-full">
           <img
             src="/stockPod.webp"
             alt="background image"
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center">
           <div className="xl:text-6xl md:text-4xl sm:text-2xl text-white uppercase absolute top-[13rem] text-center font-bold font-mono">
-            <span className="text-4xl md:text-5xl lg:text-5xl font-bold font-mono uppercase text-white">
+            <span className="text-6xl md:text-5xl lg:text-5xl font-bold font-mono uppercase text-white">
               Welcome to
             </span>
             <br />

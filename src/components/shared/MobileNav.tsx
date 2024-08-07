@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 
 export default function MobileNav() {
   return (
-    <div>
+    <div className="mr-5">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="focus:outline-none">
             <svg
-              className="w-8 h-8 text-white mr-5"
+              className="w-9 h-9 text-white mr-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -28,14 +28,14 @@ export default function MobileNav() {
             </svg>
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="min-w-[6rem] mr-8">
           <DropdownMenuItem asChild>
             <Link to="/">Home</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem className="w-fit" asChild>
             <Link to="/podcast">Podcast</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem className="w-fit" asChild>
             <Link to="/about">About</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
